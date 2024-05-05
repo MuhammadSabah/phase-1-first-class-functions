@@ -1,29 +1,37 @@
 // Define the receivesAFunction function
 function receivesAFunction(callback) {
-  // Call the callback function
+  // Call the provided callback function
   callback();
 }
+
+// Example usage
+function myCallback() {
+  console.log("Inside myCallback function");
+}
+
+// Call receivesAFunction and pass myCallback as the argument
+receivesAFunction(myCallback);
 
 // Define the returnsANamedFunction function
 function returnsANamedFunction() {
   // Define and return a named function
-  function namedFunction() {
-    console.log("This is a named function!");
-  }
-  return namedFunction;
-}
-
-// Define the returnsAnAnonymousFunction function
-function returnsAnAnonymousFunction() {
-  // Return an anonymous function directly
-  return function () {
-    console.log("This is an anonymous function!");
+  return function namedFunction() {
+    console.log("This is a named function");
   };
 }
 
-// Export these functions to be used in other modules if needed
-module.exports = {
-  receivesAFunction,
-  returnsANamedFunction,
-  returnsAnAnonymousFunction,
-};
+// Example usage
+const myFunction = returnsANamedFunction();
+myFunction(); // Output: This is a named function
+
+// Define the returnsAnAnonymousFunction function
+function returnsAnAnonymousFunction() {
+  // Return an anonymous function
+  return function () {
+    console.log("This is an anonymous function");
+  };
+}
+
+// Example usage
+const myAnonymousFunction = returnsAnAnonymousFunction();
+myAnonymousFunction(); // Output: This is an anonymous function
